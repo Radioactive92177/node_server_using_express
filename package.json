@@ -1,0 +1,17 @@
+{
+  "name": "node_server_using_express",
+  "version": "1.0.0",
+  "description": "NodeJs server using express JS",
+  "main": "app.js",
+  "license": "MIT",
+  "scripts": {
+    "start":"nodemon app.js"
+  },
+  "type": "module",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
