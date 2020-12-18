@@ -1,10 +1,11 @@
-import { Router } from "express";
+const path = require("path");
 
-const router = Router();
+const express = require("express");
 
-router.use("/", (req, res, next) => {
-  console.log("I'm middleware 2");
-  res.send("<h1>Hi from the server</h1>");
+const router = express.Router();
+
+router.get("/", (req, res, next) => {
+  res.sendFile(path.join(__dirname, "../", "views", "shop.html"));
 });
 
-export { router as shopRoutes };
+module.exports = router;
