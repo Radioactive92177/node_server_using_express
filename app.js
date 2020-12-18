@@ -1,17 +1,17 @@
 import express from "express";
+import bodyParser from "body-parser";
+
+import { adminRoutes } from "./routes/admin.js";
+import { shopRoutes } from "./routes/shop.js";
 
 //? Initialising app for the server
 const app = express();
 
-//? Middleware
-app.use((req, res, next) => {
-  console.log("I'm middleware 1");
-  next();
-});
-app.use((req, res, next) => {
-  console.log("I'm middleware 2");
-  res.send("<h1>Hi from the server</h1>");
-});
+app.use(bodyParser.urlencoded({ extended: false }));
+
+//? Middlewares
+app.use(adminRoutes);
+app.use(shopRoutes);
 
 //? Initialising server
 app.listen(3000);
