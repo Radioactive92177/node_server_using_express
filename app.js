@@ -1,18 +1,22 @@
-const express = require("express");
-const bodyParser = require("body-parser");
+import express from "express";
+import bodyParser from "body-parser";
+import { join } from "path";
 
+import { adminRoutes } from "./routes/admin.js";
+import { shopRoutes } from "./routes/shop.js";
+import { rootNode } from "./utils/path.js";
+
+//? Initialising app for the server
 const app = express();
-
-const adminRoutes = require("./routes/admin");
-const shopRoutes = require("./routes/shop");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
+//? Middlewares
 app.use("/admin", adminRoutes);
 app.use(shopRoutes);
-
 app.use((req, res, next) => {
-  res.status(404).send("<h1>Page not found</h1>");
+  res.status(404).sendFile(join(rootNode, "../", "views", "404.html"));
 });
 
+//? Initialising server
 app.listen(3000);

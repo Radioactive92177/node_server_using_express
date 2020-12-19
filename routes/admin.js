@@ -1,18 +1,17 @@
-const path = require("path");
+import { join } from "path";
 
-const express = require("express");
+import { Router } from "express";
+import { rootNode } from "../utils/path.js";
 
-const router = express.Router();
+const router = Router();
 
-// /admin/add-product => GET
-router.get("/add-product", (req, res, next) => {
-  res.sendFile(path.join(__dirname, "../", "views", "add-product.html"));
+router.get("/addProduct", (req, res, next) => {
+  res.sendFile(join(rootNode, "../", "views", "addProduct.html"));
 });
 
-// /admin/add-product => POST
-router.post("/product", (req, res, next) => {
+router.post("/product", (req, res) => {
   console.log(req.body);
   res.redirect("/");
 });
 
-module.exports = router;
+export { router as adminRoutes };
