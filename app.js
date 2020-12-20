@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 
 import { adminRoutes } from "./routes/admin.js";
 import { shopRoutes } from "./routes/shop.js";
+import { notFound } from "./controllers/notFound.js";
 
 //? Initialising app for the server
 const app = express();
@@ -16,9 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //? Middlewares
 app.use("/admin", adminRoutes);
 app.use(shopRoutes);
-app.use((req, res, next) => {
-  res.status(404).render("404");
-});
+app.use(notFound);
 
 //? Initialising server
 app.listen(3000);

@@ -2,16 +2,12 @@ import { join } from "path";
 
 import { Router } from "express";
 
+import { addProduct, setProducts } from "../controllers/products.js";
+
 const router = Router();
-const products = [];
 
-router.get("/addProduct", (req, res, next) => {
-  res.render("addProduct", { pageTitle: "Add Product" });
-});
+router.get("/addProduct", addProduct);
 
-router.post("/product", (req, res, next) => {
-  products.push(req.body);
-  res.redirect("/");
-});
+router.post("/product", setProducts);
 
-export { router as adminRoutes, products };
+export { router as adminRoutes };
