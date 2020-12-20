@@ -6,7 +6,7 @@ const router = Router();
 const products = [];
 
 router.get("/addProduct", (req, res, next) => {
-  res.render("addProduct");
+  res.render("addProduct", { pageTitle: "Add Product" });
 });
 
 router.post("/product", (req, res, next) => {

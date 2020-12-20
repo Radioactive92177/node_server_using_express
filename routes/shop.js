@@ -6,7 +6,7 @@ const router = Router();
 
 router.get("/", (req, res, next) => {
   console.log(products);
-  res.render("shop");
+  res.render("shop", { pageTitle: "Homepage" });
 });
 
 export { router as shopRoutes };
