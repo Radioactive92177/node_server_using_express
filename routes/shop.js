@@ -1,12 +1,12 @@
-import { join } from "path";
-
 import { Router } from "express";
-import { rootNode } from "../utils/path.js";
+
+import { products } from "./admin.js";
 
 const router = Router();
 
 router.get("/", (req, res, next) => {
-  res.sendFile(join(rootNode, "../", "views", "shop.html"));
+  console.log(products);
+  res.render("shop");
 });
 
 export { router as shopRoutes };

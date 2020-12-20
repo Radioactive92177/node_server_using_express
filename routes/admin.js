@@ -1,17 +1,17 @@
 import { join } from "path";
 
 import { Router } from "express";
-import { rootNode } from "../utils/path.js";
 
 const router = Router();
+const products = [];
 
 router.get("/addProduct", (req, res, next) => {
-  res.sendFile(join(rootNode, "../", "views", "addProduct.html"));
+  res.render("addProduct");
 });
 
-router.post("/product", (req, res) => {
-  console.log(req.body);
+router.post("/product", (req, res, next) => {
+  products.push(req.body);
   res.redirect("/");
 });
 
-export { router as adminRoutes };
+export { router as adminRoutes, products };
